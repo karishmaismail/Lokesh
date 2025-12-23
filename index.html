@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Lokesh ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(to bottom, #ffe6f0, #fff);
+  color: #4d0026;
+}
+
+.hidden { display: none; }
+
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* PASSWORD */
+#lock {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  width: 80%;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #b30059;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+}
+
+/* NAV */
+nav {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+nav button {
+  margin: 5px;
+  background: #ff99cc;
+}
+
+/* LETTER */
+.letter {
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  line-height: 1.8;
+}
+
+.photo img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px;
+}
+
+/* TYPE EFFECT */
+#typed {
+  border-right: 2px solid #4d0026;
+  padding-right: 5px;
+  white-space: pre-wrap;
+}
+
+/* COUNTDOWN */
+#countdown {
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 20px 0;
+  color: #800040;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
+
+audio { display: none; }
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PASSWORD SCREEN -->
+<div id="lock">
+  <div class="lock-box">
+    <h2>For Lokesh ❤️</h2>
+    <p>Enter the password</p>
+    <input type="password" id="pass">
+    <br>
+    <button onclick="unlock()">Open My Heart</button>
+  </div>
+</div>
+
+<!-- MAIN SITE -->
+<div id="site" class="hidden container">
+
+<nav>
+  <button onclick="showPage('page1')">Diary 1</button>
+  <button onclick="showPage('page2')">Diary 2</button>
+  <button onclick="showPage('page3')">Diary 3</button>
+</nav>
+
+<div id="countdown"></div>
+
+<!-- PAGE 1 -->
+<div id="page1" class="letter">
+  <h2>Dear Lokesh ❤️</h2>
+  <p id="typed"></p>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="letter hidden">
+  <h2>When I Miss You 🌙</h2>
+  <p>
+    Lokesh, some nights feel longer without you.
+    My heart replays memories just to feel closer to you.
+  </p>
+  <div class="photo">
+    <img src="lokesh.jpg">
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="letter hidden">
+  <h2>My Promise 🤍</h2>
+  <p>
+    No matter how far life takes us,
+    you will always be my favorite place.
+  </p>
+  <p>
+    Until we meet again — I am always yours.
+  </p>
+</div>
+
+<footer>
+  Made with endless love for Lokesh 💕
+</footer>
+
+</div>
+
+<script>
+/* PASSWORD */
+function unlock() {
+  if (document.getElementById("pass").value === "lokeshforever") {
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("site").classList.remove("hidden");
+    typeText();
+  } else {
+    alert("Wrong password 💔");
+  }
+}
+
+/* NAV */
+function showPage(id) {
+  document.querySelectorAll(".letter").forEach(p => p.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
+
+/* TYPE EFFECT */
+const text = `Lokesh,
+I don’t know when loving you became this deep,
+but now every thought leads to you.
+
+Missing you is hard,
+but loving you is easy.
+
+This page is a small proof
+of how much you mean to me.`;
+
+let i = 0;
+function typeText() {
+  if (i < text.length) {
+    document.getElementById("typed").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeText, 40);
+  }
+}
+
+/* COUNTDOWN */
+const meetDate = new Date("Jan 1, 2026 00:00:00").getTime();
+setInterval(() => {
+  const now = new Date().getTime();
+  const d = meetDate - now;
+  const days = Math.floor(d / (1000 * 60 * 60 * 24));
+  document.getElementById("countdown").innerHTML =
+    `⏳ Days until I see you, Lokesh: <b>${days}</b>`;
+}, 1000);
+</script>
+
+</body>
+</html>
